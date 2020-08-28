@@ -56,28 +56,7 @@ const RootMutationType = new GraphQLObjectType({
         return user
       }
     },
-    updateUser: {
-      type: UsersType,  
-      description: 'update a user',
-      args: {
-        id: { type: GraphQLNonNull(GraphQLInt) },
-        name: { type: GraphQLNonNull(GraphQLString) },
-        points: { type: GraphQLNonNull(GraphQLInt) },
-      },
-      resolve: (parent, args) => {
-        const userupdate = { id: args.id, name: args.name, points: args.points }
-          for (user in users){
-            if(user.id === args.id){
-              user.points = args.points
-            }
-          }
-        var data = JSON.stringify(users)
-        fs.writeFile("users.json" , data , finished)
-        return userupdate
-      }
-    }
-
-
+   
   })
 })
 
